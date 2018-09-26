@@ -1,37 +1,41 @@
-# ECMAScript 6 <sup>[git.io/es6features](http://git.io/es6features)</sup>
+# ECMAScript 6 <sup>[git.io/es6features](http://git.io/es6features)</sup> 中译版
 
 ## Introduction
-ECMAScript 6, also known as ECMAScript 2015, is the latest version of the ECMAScript standard.  ES6 is a significant update to the language, and the first update to the language since ES5 was standardized in 2009. Implementation of these features in major JavaScript engines is [underway now](http://kangax.github.io/es5-compat-table/es6/).
+ECMAScript 6 也就是 ECMAScript 2015, 是 ECMAScript 标准的最新版。
+ES6 语言上有非常大的改变，是2009年 ES5 标准化以来的首次更新。
+实现了这些特性的主要 JavaScript 引擎参考  [underwaynow](http://kangax.github.io/es5-compat-table/es6/).
+ECMAScript 6 语言完整标准请参考 [ES6 standard](http://www.ecma-international.org/ecma-262/6.0/)。
+ES6 包括下列新特性：
 
-See the [ES6 standard](http://www.ecma-international.org/ecma-262/6.0/) for full specification of the ECMAScript 6 language.
-
-ES6 includes the following new features:
-- [arrows](#arrows)
-- [classes](#classes)
-- [enhanced object literals](#enhanced-object-literals)
-- [template strings](#template-strings)
-- [destructuring](#destructuring)
+- [箭头符](#arrows)
+- [类](#classes)
+- [常量声明增强](#enhanced-object-literals)
+- [模版字符串](#template-strings)
+- [析构](#destructuring)
 - [default + rest + spread](#default--rest--spread)
 - [let + const](#let--const)
 - [iterators + for..of](#iterators--forof)
 - [generators](#generators)
 - [unicode](#unicode)
-- [modules](#modules)
-- [module loaders](#module-loaders)
+- [模块](#modules)
+- [模块加载](#module-loaders)
 - [map + set + weakmap + weakset](#map--set--weakmap--weakset)
 - [proxies](#proxies)
 - [symbols](#symbols)
-- [subclassable built-ins](#subclassable-built-ins)
+- [子类化支持](#subclassable-built-ins)
 - [promises](#promises)
 - [math + number + string + array + object APIs](#math--number--string--array--object-apis)
-- [binary and octal literals](#binary-and-octal-literals)
-- [reflect api](#reflect-api)
+- [二进制与八进制常量](#binary-and-octal-literals)
+- [反射api](#reflect-api)
 - [tail calls](#tail-calls)
 
-## ECMAScript 6 Features
+## ECMAScript 6 特性
 
-### Arrows
-Arrows are a function shorthand using the `=>` syntax.  They are syntactically similar to the related feature in C#, Java 8 and CoffeeScript.  They support both statement block bodies as well as expression bodies which return the value of the expression.  Unlike functions, arrows share the same lexical `this` as their surrounding code.
+### 箭头符
+箭头符 `=>` 是函数的简写语法。
+句法上与 C# , Java 8 及 CoffeeScript 中相关特性类似。
+支持语句块也支持值返回表达式。
+与函数不同的是，箭头符范围内的代码都同享同样的 `this`。
 
 ```JavaScript
 // Expression bodies
@@ -56,11 +60,12 @@ var bob = {
 }
 ```
 
-More info: [MDN Arrow Functions](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+更多信息参考: [MDN Arrow Functions](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
 
-### Classes
-ES6 classes are a simple sugar over the prototype-based OO pattern.  Having a single convenient declarative form makes class patterns easier to use, and encourages interoperability.  Classes support prototype-based inheritance, super calls, instance and static methods and constructors.
-
+### 类
+ES6 中的类是基于 prototype 实现面向对象编程的简单语法糖。
+使用简单易用的声明语法。
+支持类继承，可调用父类方法、实例方法、静态方法及构造函数。
 ```JavaScript
 class SkinnedMesh extends THREE.Mesh {
   constructor(geometry, materials) {
@@ -87,10 +92,11 @@ class SkinnedMesh extends THREE.Mesh {
 }
 ```
 
-More info: [MDN Classes](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)
+更多信息参考: [MDN Classes](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)
 
-### Enhanced Object Literals
-Object literals are extended to support setting the prototype at construction, shorthand for `foo: foo` assignments, defining methods, making super calls, and computing property names with expressions.  Together, these also bring object literals and class declarations closer together, and let object-based design benefit from some of the same conveniences.
+### 对象声明语法
+对象声明构造支持设置 prototype , 采用赋值方式简写 `foo: foo` , 定义方法，调用父类方法，使用表达式计算属性名。
+这些类相关的语法让面向对象设计更加方便。
 
 ```JavaScript
 var obj = {
@@ -108,10 +114,13 @@ var obj = {
 };
 ```
 
-More info: [MDN Grammar and types: Object literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Object_literals)
+更多请参考: [MDN Grammar and types: Object literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Object_literals)
 
-### Template Strings
-Template strings provide syntactic sugar for constructing strings.  This is similar to string interpolation features in Perl, Python and more.  Optionally, a tag can be added to allow the string construction to be customized, avoiding injection attacks or constructing higher level data structures from string contents.
+### 字符串模版
+字符串模版提供了构造字符串的语法糖。
+
+与 Perl ，Python 及其他语言中的字符串插值类似。
+可选，添加到字符串的一个标记会定制字符串的构建，避免注入攻击或从字符串中构建更高级的数据结构。
 
 ```JavaScript
 // Basic literal string creation
@@ -133,7 +142,7 @@ POST`http://foo.org/bar?a=${a}&b=${b}
        "bar": ${bar}}`(myOnReadyStateChangeHandler);
 ```
 
-More info: [MDN Template Strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings)
+更多参考: [MDN Template Strings](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings)
 
 ### Destructuring
 Destructuring allows binding using pattern matching, with support for matching arrays and objects.  Destructuring is fail-soft, similar to standard object lookup `foo["bar"]`, producing `undefined` values when not found.
